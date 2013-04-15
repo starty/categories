@@ -4,12 +4,19 @@ import grails.converters.JSON
 
 class CategoryController {
 
-    def getCategories(){
-        Category categTest = new Category()
-        categTest.setCategoryId(1234)
-        categTest.setName("Pelados")
+    def categoryService
+
+    def getCategoriesBySite(){
+        def categories = categoryService.getCategoriesBySite(params.siteId)
 
         response.status = 200
-        render categTest as JSON
+        render categories.sort{it.name} as JSON
+    }
+
+    def getCategoryById(){
+        def category = categoryService.getCategoryById(Integer.parseInt(params.categoryId))
+
+        response.status = 200
+        render category as JSON
     }
 }
