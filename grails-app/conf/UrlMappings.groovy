@@ -9,7 +9,7 @@ class UrlMappings {
             action = [ GET: "getCategoriesBySite"]
         }
 
-        "/id/$categoryId" (controller: "category") {
+        "/$categoryId" (controller: "category") {
             action = [ GET: "getCategoryById"]
         }
 	}
